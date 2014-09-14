@@ -12,4 +12,6 @@ nemo64:bootstrap
 accounts-base
 accounts-password
 ian:accounts-ui-bootstrap-3
+mrt:accounts-soundcloud
+service-configuration
 
