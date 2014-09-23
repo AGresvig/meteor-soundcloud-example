@@ -27,6 +27,7 @@ html-tools@1.0.0
 htmljs@1.0.1
 http@1.0.5
 ian:accounts-ui-bootstrap-3@1.1.8
+ian:bootstrap-3@1.0.3
 id-map@1.0.0
 insecure@1.0.0
 jquery@1.0.0
@@ -43,7 +44,6 @@ mobile-status-bar@1.0.0
 mongo@1.0.5
 mrt:accounts-soundcloud@0.1.2
 mrt:soundcloud@0.1.1
-nemo64:bootstrap@3.2.1
 npm-bcrypt@0.7.7
 oauth2@1.1.0
 oauth@1.1.0
