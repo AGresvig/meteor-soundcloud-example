@@ -4,8 +4,8 @@ ServiceConfiguration.configurations.remove({
 });
 ServiceConfiguration.configurations.insert({
   service: "soundcloud",
-  clientId: process.env.SC_CLIENTID,
-  secret: process.env.SC_SECRET
+  clientId : Meteor.settings.authentication.soundcloud.clientId,
+  secret : Meteor.settings.authentication.soundcloud.secret
 });
 
 Meteor.startup(function () {
