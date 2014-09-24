@@ -62,15 +62,18 @@
 
 <template name="importLikes">
     <h2>Your recent likes</h2>
-    {{#each likes}}
-    <div class="media">
-      <a class="pull-left" href="{{permalink_url}}">
-      <img class="media-object" src="{{artwork_url}}" alt="">
-      </a>
-      <div class="media-body">
-        <h4 class="media-heading"><a href="{{permalink_url}}">{{title}}</a></h4>
-        <p>{{description}}</p>
-      </div>
+    <p>Select the tracks you want to import!</p>
+    <div class="list-group">
+        {{#each likes}}
+        <a class="track media list-group-item">
+          <a class="pull-left" href="{{permalink_url}}" target="_blank">
+            <img class="media-object" src="{{artwork_url}}" alt="Coverart" width="100px" height="100px">
+          </a>
+          <div class="media-body">
+            <h4 class="media-heading">{{title}}</h4>
+            <p>{{description}}</p>
+          </div>
+        </a>
+        {{/each}}
     </div>
-    {{/each}}
 </template>
