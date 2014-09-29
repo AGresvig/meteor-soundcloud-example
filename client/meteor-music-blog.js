@@ -63,3 +63,11 @@ Template.importLikes.events({
         //Router.go('home');
     }
 });
+
+Template.home.userHasTracks = function() {
+    return Tracks.find({'blogMetadata.addedBy': Meteor.user() }).count() > 0;
+}
+
+Template.trackGrid.tracks = function() {
+    return Tracks.find({'blogMetadata.addedBy': Meteor.user() }).fetch();
+}

@@ -28,8 +28,11 @@
 </template>
 
 <template name="home">
-    <div class="jumbotron">
-        {{#if currentUser}}
+    {{#if currentUser}}
+        {{#if userHasTracks}}
+            {{> trackGrid}}
+        {{else}}
+        <div class="jumbotron">
             <h2>Welcome {{currentUser.profile.name}}!</h2>
             <p>You're connected, thats really cool.</p>
             {{#with currentUser.services.soundcloud}}
@@ -48,11 +51,11 @@
                 <a href="{{pathFor 'importLikes'}}" class="btn btn-lg btn-primary" role="button">Lets go</a>
             </div>
             {{/with}}
-
-        {{else}}
-            <p>You need to connect to Soundcloud to do anything cool here</p>
+        </div>
         {{/if}}
-    </div>
+    {{else}}
+        <p>You need to connect to Soundcloud to do anything cool here</p>
+    {{/if}}
 
 </template>
 
@@ -60,7 +63,7 @@
     <button class="btn btn-default btn-block" id="soundcloud-login">Connect to Soundcloud</button>
 </template>
 
-<template name="importLikes" class="wtf">
+<template name="importLikes">
     <h2>Your recent likes</h2>
     <p>Here are your most recent likes (up to 15). Select the tracks you want to import into this app, and then click the button at the bottom!</p>
     <div class="list-group">
@@ -105,5 +108,11 @@
         </div>
       </div>
     </div>
+</template>
 
+<template name="trackGrid">
+    <h2>Your tracks</h2>
+    {{#each tracks}}
+        <p>{{title}}</p>
+    {{/each}}
 </template>
