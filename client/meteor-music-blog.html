@@ -60,20 +60,21 @@
     <button class="btn btn-default btn-block" id="soundcloud-login">Connect to Soundcloud</button>
 </template>
 
-<template name="importLikes">
+<template name="importLikes" class="wtf">
     <h2>Your recent likes</h2>
-    <p>Select the tracks you want to import!</p>
+    <p>Here are your most recent likes (up to 15). Select the tracks you want to import into this app, and click the button!</p>
     <div class="list-group">
         {{#each likes}}
-        <a class="track media list-group-item">
+        <a class="like-track media list-group-item">
           <a class="pull-left" href="{{permalink_url}}" target="_blank">
             <img class="media-object" src="{{artwork_url}}" alt="Coverart" width="100px" height="100px">
           </a>
           <div class="media-body">
             <h4 class="media-heading">{{title}}</h4>
-            <p>{{description}}</p>
+            <p class="description">{{description}}</p>
           </div>
         </a>
         {{/each}}
     </div>
+    <button class="btn btn-success btn-block" id="import-likes">I'm finished!</button>
 </template>

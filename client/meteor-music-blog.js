@@ -20,7 +20,7 @@ Template.importLikes.likes = function() {
 }
 
 Template.importLikes.events({
-    'click .track': function (event) {
+    'click .like-track': function (event) {
         var track = this;
         var selectedTracks = Session.get("selectedTracks") ? Session.get("selectedTracks").slice() : [];
 
@@ -37,6 +37,6 @@ Template.importLikes.events({
             Session.set("selectedTracks", selectedTracks.concat(track));
         }
         //Toggle 'active' css class on the list-group item for styling 
-        $(event.target).closest('.track').toggleClass('active')
+        $(event.target).closest('.like-track').toggleClass('active');
     }
 });

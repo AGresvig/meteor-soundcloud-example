@@ -21,7 +21,7 @@ Soundcloud = {
       this.likes = [];
 
       //Call the API
-      SC.get("/me/favorites", {limit: 5} ,_.bind(function(response){
+      SC.get("/me/favorites", {limit: 15} ,_.bind(function(response){
         if(response.errors){
             throw new Error("Error getting likes");
             return;
