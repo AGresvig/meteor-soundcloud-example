@@ -19,6 +19,10 @@ Template.importLikes.likes = function() {
     return Soundcloud.getLikes();
 }
 
+Template.importLikes.selectedLikes = function() {
+    return Session.get("selectedTracks");
+}
+
 Template.importLikes.events({
     'click .like-track': function (event) {
         var track = this;

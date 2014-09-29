@@ -62,7 +62,7 @@
 
 <template name="importLikes" class="wtf">
     <h2>Your recent likes</h2>
-    <p>Here are your most recent likes (up to 15). Select the tracks you want to import into this app, and click the button!</p>
+    <p>Here are your most recent likes (up to 15). Select the tracks you want to import into this app, and then click the button at the bottom!</p>
     <div class="list-group">
         {{#each likes}}
         <a class="like-track media list-group-item">
@@ -76,5 +76,30 @@
         </a>
         {{/each}}
     </div>
-    <button class="btn btn-success btn-block" id="import-likes">I'm finished!</button>
+    {{#if selectedLikes.length}}
+    <button class="btn btn-success btn-block" id="import-likes" 
+         data-toggle="modal" data-target="#confirmModal">
+         I'm finished! Import {{selectedLikes.length}} like(s).
+    </button>
+    {{/if}}
+
+    <!-- Modal -->
+    <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="confirmModalLabel">Confirm import</h4>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Import tracks</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
 </template>
