@@ -43,5 +43,23 @@ Template.importLikes.events({
         }
         //Toggle 'active' css class on the list-group item for styling 
         $(event.target).closest('.like-track').toggleClass('active');
+    },
+
+    'click #importLikesBtn': function(event) {
+        var now = new Date();
+        _.each(Session.get("selectedTracks"), function(track) {
+            var metadata = {
+                dateAdded: now,
+                lastModified: now,
+                addedBy: Meteor.user()
+            };
+            track.blogMetadata = metadata;
+
+            Meteor.call('createTrack', track, function(error, result){
+                console.log("Saved track: " + track.title);
+            });
+        });
+        $('#confirmModal').modal('hide');
+        //Router.go('home');
     }
 });
