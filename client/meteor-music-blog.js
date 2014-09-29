@@ -16,6 +16,7 @@ Template._loginButtonsLoggedInDropdown.events({
 });
 
 Template.importLikes.likes = function() {
+    Session.set("selectedTracks", null);
     return Soundcloud.getLikes();
 }
 
