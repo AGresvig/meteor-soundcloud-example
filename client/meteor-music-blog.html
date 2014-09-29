@@ -112,19 +112,17 @@
 
 <template name="trackGrid">
     <h2>Your tracks</h2>
-    <div class="row">
-        {{#each tracks}}
-            <div class="col-md-4">
-                <div class="media">
-                    <a class="pull-left" href="{{permalink_url}}" target="_blank">
-                        <img class="media-object" src="{{artwork_url}}" alt="Coverart" width="100px" height="100px">
-                    </a>
-                  <div class="media-body">
-                    <h4 class="media-heading">{{title}}</h4>
-                    <p class="description">{{description}}</p>
-                  </div>
-                </div>
+        <div class="list-group">
+            {{#each tracks}}
+            <div class="media track list-group-item">
+                <a class="pull-left" href="{{permalink_url}}" target="_blank">
+                    <img class="media-object" src="{{artwork_url}}" alt="Coverart" width="100px" height="100px">
+                </a>
+              <div class="media-body">
+                <h4 class="media-heading">{{title}}</h4>
+                <p class="description">{{description}}</p>
+              </div>
             </div>
-        {{/each}}
-    </div>
+            {{/each}}
+        </div>
 </template>
