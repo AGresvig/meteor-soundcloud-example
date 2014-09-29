@@ -32,10 +32,10 @@ Template.importLikes.events({
         //Meteor._debug("Removing tag \"" + this + "\", index: " + index, ", typeof(this) = " + typeof(this).toString());
 
         //If we have this track selected already
-        if(_.contains(selectedTracks, track)) {
+        if(_.findWhere(selectedTracks, {id: track.id})) {
             //..then unselect it
             track.selected = false;
-            Session.set("selectedTracks", _.without(selectedTracks, track));
+            Session.set("selectedTracks", _.without(selectedTracks, _.findWhere(selectedTracks, {id: track.id})));
         } else {
             //..otherwise select it
             track.selected = true;
