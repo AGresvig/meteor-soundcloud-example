@@ -118,3 +118,27 @@
         </div>
         {{/each}}
 </template>
+
+<template name="edit">
+    <div class="list-group">
+        {{#each tracks}}
+        <div class="track media list-group-item">
+          <a class="pull-left" href="{{permalink_url}}" target="_blank">
+            <img class="media-object" src="{{artwork_url}}" alt="Coverart" width="100px" height="100px">
+          </a>
+          <div class="media-body">
+            <h4 class="media-heading" name="title" contenteditable="{{editing}}">
+                {{title}}
+            </h4>
+            <p class="description" name="description" contenteditable="{{editing}}">
+                {{description}}
+            </p>
+          </div>
+            <button class="btn btn-success btn-block edit-save">
+                 {{#if editing}}Save{{else}}Edit{{/if}}
+            </button>
+        </div>
+        {{/each}}
+    </div>
+</template>
+

@@ -3,6 +3,7 @@ Router.configure({layoutTemplate: 'masterLayout'});
 Router.map(function() {
   this.route('home', {path: '/'});
   this.route('importLikes', {path: '/import'});
+  this.route('edit', {path: '/edit'});
 });
 
 Template._loginButtonsLoggedInDropdown.events({
@@ -57,17 +58,46 @@ Template.importLikes.events({
 
             Meteor.call('createTrack', track, function(error, result){
                 console.log("Saved track: " + track.title);
+                Router.go('home');
             });
         });
         $('#confirmModal').modal('hide');
-        //Router.go('home');
     }
 });
 
+var getMyTracks = function() {
+    return Tracks.find({'blogMetadata.addedBy': Meteor.user() });
+}
+
 Template.home.userHasTracks = function() {
-    return Tracks.find({'blogMetadata.addedBy': Meteor.user() }).count() > 0;
+    return getMyTracks().count() > 0;
 }
 
 Template.trackGrid.tracks = function() {
-    return Tracks.find({'blogMetadata.addedBy': Meteor.user() }).fetch();
+    return getMyTracks().fetch();
 }
+
+Template.edit.tracks = function() {
+    return Tracks.find().fetch();
+}
+
+Template.edit.events = ({
+    'click .edit-save': function() {
+        var track = this,
+            $trackForm = $(event.target).closest('.track'),
+            editableProperties = ['title', 'description'];
+        
+        track.editing = !track.editing;
+        if(track.editing) return;        
+        console.log("Updating track "+track._id);
+        Tracks.update(track._id, {$set: {editing: !track.editing }});
+
+        _.each(editableProperties, function(propName) {
+            var newVal = $trackForm.find("[name='"+propName+"']").text().trim();
+            //track[propName] = newVal;
+            console.log(propName + ": " + newVal);
+            Tracks.update(track.id, {$set: {propName: newVal }});
+        });
+        track.lastModified = new Date();
+    }
+});
