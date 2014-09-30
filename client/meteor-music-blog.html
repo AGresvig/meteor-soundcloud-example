@@ -12,10 +12,19 @@
                 <a class="navbar-brand" href="/">Meteor-Soundcloud-App</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
+                {{#if currentUser}}
                 <ul class="nav navbar-nav">
-                    <!-- <li class="active"><a href="#">Home</a></li> -->
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/import">Import tracks</a></li>
+                    <li><a href="/edit">Edit tracks</a></li>
                 </ul>
+
+                {{/if}}
                 <ul class="nav navbar-nav navbar-right">
+                    {{#with currentUser.services.soundcloud}}
+                    <li><a href="{{permalink_url}}" target="_blank">{{username}}</a></li>
+                    <li><img src="{{avatar_url}}" height="50px"></li>
+                    {{/with}}
                     {{> loginButtons }}
                 </ul>
             </div><!--/.nav-collapse -->
