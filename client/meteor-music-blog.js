@@ -58,9 +58,11 @@ Template.importLikes.events({
 
             Meteor.call('createTrack', track, function(error, result){
                 console.log("Saved track: " + track.title);
-                Router.go('home');
             });
         });
+        $('#confirmModal').on('hidden.bs.modal', function (e) {
+            Router.go('home');
+        })
         $('#confirmModal').modal('hide');
     }
 });
