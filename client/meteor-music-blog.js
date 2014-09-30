@@ -99,5 +99,10 @@ Template.edit.events = ({
             Tracks.update(track.id, {$set: {propName: newVal }});
         });
         track.lastModified = new Date();
+    },
+
+    'click .edit-delete': function() {
+        var track = this;
+        Tracks.remove(track._id);
     }
 });

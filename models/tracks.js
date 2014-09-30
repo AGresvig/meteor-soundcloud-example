@@ -5,7 +5,7 @@ Meteor.methods({
   createTrack: function(track){
     Tracks.insert(track);
   },
-  removeTrack: function(item){
+  removeTrack: function(track){
     Tracks.remove(track._id);
   }
 });

@@ -143,9 +143,14 @@
                 {{description}}
             </p>
           </div>
-            <button class="btn btn-success btn-block edit-save">
+          <div class="btn-container">
+            <button class="btn btn-danger btn-sm edit-delete">
+                 Delete
+            </button>
+            <button class="btn btn-success btn-sm edit-save">
                  {{#if editing}}Save{{else}}Edit{{/if}}
             </button>
+            </div>
         </div>
         {{/each}}
     </div>
